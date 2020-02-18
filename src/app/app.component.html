@@ -1,0 +1,20 @@
+<div class="container">
+<h1>Angular Hello</h1>
+
+<app-post-form
+(onAdd)="updatePosts($event)"></app-post-form>
+
+<hr>
+
+<app-post 
+  *ngFor="let post of posts"
+  [post]="post"
+  (onDeletePost)="remuvePost($event)">
+  <div #info>
+    <small *ngIf="post.text.length > 10; else short">Пост довгий</small>
+    <ng-template #short>
+      <small>Пост короткий</small>
+    </ng-template>
+  </div>
+</app-post>
+</div>
